@@ -19,28 +19,27 @@ export default function Analytics() {
     const router = useRouter();
 
     useEffect(() => {
-        // Removed naive frontend admin check so legitimate superusers aren't blocked.
-        // The backend handles the 403 Forbidden check securely via JWT anyway.
+        if (!isAdmin) {
+            return;
+        }
 
         const loadAnalytics = async () => {
-
             try {
                 const data = await fetchApi('/analytics/top-routes/');
                 if (Array.isArray(data)) {
                     setRoutes(data);
                 } else {
-                    // Handle 500 error gracefully if MongoDB is dead
                     setError(data.error || 'Failed to analyze records');
                 }
             } catch (err: any) {
-                setError(err.message || 'Failed to load analytics contextually');
+                setError(err.message || 'Failed to load analytics');
             } finally {
                 setIsLoading(false);
             }
         };
 
         loadAnalytics();
-    }, [isAdmin, router]);
+    }, [isAdmin]);
 
     if (isLoading) return <div className="p-8 text-center text-gray-500 font-medium">Loading analytics data...</div>;
 

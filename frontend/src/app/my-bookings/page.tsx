@@ -24,28 +24,23 @@ export default function MyBookings() {
     const router = useRouter();
 
     useEffect(() => {
-        if (!isAuthenticated && typeof window !== 'undefined' && !localStorage.getItem('access_token')) {
-            router.push('/login');
+        if (!isAuthenticated) {
             return;
         }
 
         const loadBookings = async () => {
-
             try {
                 const data = await fetchApi('/bookings/my/');
-                // Transform the data slightly for presentation since Django returns just the train ID
-                // Note: For a fully complete app, the backend would serialize full train details. 
-                // We will just show the raw booking data here.
                 setBookings(data);
             } catch (err: any) {
-                setError(err.message || 'Failed to load bookings contextually');
+                setError(err.message || 'Failed to load bookings');
             } finally {
                 setIsLoading(false);
             }
         };
 
         loadBookings();
-    }, [isAuthenticated, router]);
+    }, [isAuthenticated]);
 
     if (isLoading) return <div className="p-8 text-center text-gray-500 font-medium">Loading bookings...</div>;
 

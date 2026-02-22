@@ -13,6 +13,7 @@ This is a simplified backend clone of the IRCTC platform, fulfilling the require
 ### 1. Prerequisites
 - Python 3.10+
 - MongoDB running locally or via Atlas.
+  > **Note for Atlas users:** If you encounter an `[SSL: TLSV1_ALERT_INTERNAL_ERROR]` during API calls (e.g., getting a 500 error on the Analytics page), it means your current IP address is not whitelisted in MongoDB Atlas. Go to your Atlas dashboard -> **Network Access** -> **Add IP Address** -> **Add Current IP Address** to fix this.
 
 ### 2. Available Environment Variables
 *(See Step 1 below on how to configure these)*

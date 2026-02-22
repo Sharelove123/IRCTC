@@ -21,6 +21,7 @@ class UserRegistrationView(generics.CreateAPIView):
             'user': UserRegistrationSerializer(user, context=self.get_serializer_context()).data,
             'refresh': str(refresh),
             'access': str(refresh.access_token),
+            'is_admin': user.is_staff,
         }, status=status.HTTP_201_CREATED)
 
 class UserLoginView(generics.GenericAPIView):
@@ -36,6 +37,7 @@ class UserLoginView(generics.GenericAPIView):
             return Response({
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),
+                'is_admin': user.is_staff,
             })
         return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 

@@ -27,8 +27,8 @@ export default function LoginPage() {
                 body: JSON.stringify({ username, password }),
             });
 
-            // Note: Admin logic is simplified for assignment. Should ideally use a real x-admin check on backend for boolean
-            const isAdminLogin = username === 'admin' || password === 'admin';
+            // Use backend boolean for admin status
+            const isAdminLogin = data.is_admin === true;
             login(data.access, data.refresh, isAdminLogin);
         } catch (err: any) {
             setError(err.message || 'Login failed');

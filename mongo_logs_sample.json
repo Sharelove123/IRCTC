@@ -1,0 +1,102 @@
+[
+  {
+    "_id": {
+      "$oid": "699add20c772e846bfee885c"
+    },
+    "endpoint": "/api/trains/search/",
+    "params": {},
+    "user_id": 4,
+    "execution_time": 0.003917217254638672,
+    "timestamp": 1771756832.3863707
+  },
+  {
+    "_id": {
+      "$oid": "699adc0ac772e846bfee885b"
+    },
+    "endpoint": "/api/trains/search/",
+    "params": {},
+    "user_id": 4,
+    "execution_time": 0.0022954940795898438,
+    "timestamp": 1771756554.207642
+  },
+  {
+    "_id": {
+      "$oid": "699adc09c772e846bfee885a"
+    },
+    "endpoint": "/api/trains/search/",
+    "params": {},
+    "user_id": 4,
+    "execution_time": 0.0036411285400390625,
+    "timestamp": 1771756553.402011
+  },
+  {
+    "_id": {
+      "$oid": "699adc05c772e846bfee8859"
+    },
+    "endpoint": "/api/trains/search/",
+    "params": {},
+    "user_id": 4,
+    "execution_time": 0.0029993057250976562,
+    "timestamp": 1771756549.5661
+  },
+  {
+    "_id": {
+      "$oid": "699adc05c772e846bfee8858"
+    },
+    "endpoint": "/api/trains/search/",
+    "params": {},
+    "user_id": 4,
+    "execution_time": 0.0030012130737304688,
+    "timestamp": 1771756549.232077
+  },
+  {
+    "_id": {
+      "$oid": "699adbf9c772e846bfee8857"
+    },
+    "endpoint": "/api/trains/search/",
+    "params": {},
+    "user_id": 4,
+    "execution_time": 0.002228975296020508,
+    "timestamp": 1771756537.0631444
+  },
+  {
+    "_id": {
+      "$oid": "699adbf9c772e846bfee8856"
+    },
+    "endpoint": "/api/trains/search/",
+    "params": {},
+    "user_id": 4,
+    "execution_time": 0.004337787628173828,
+    "timestamp": 1771756537.043204
+  },
+  {
+    "_id": {
+      "$oid": "699adbf6c772e846bfee8855"
+    },
+    "endpoint": "/api/trains/search/",
+    "params": {},
+    "user_id": 4,
+    "execution_time": 0.001992940902709961,
+    "timestamp": 1771756534.922254
+  },
+  {
+    "_id": {
+      "$oid": "699adbf6c772e846bfee8854"
+    },
+    "endpoint": "/api/trains/search/",
+    "params": {},
+    "user_id": 4,
+    "execution_time": 0.005590677261352539,
+    "timestamp": 1771756534.9000535
+  },
+  {
+    "_id": {
+      "$oid": "699adbf0c772e846bfee8853"
+    },
+    "endpoint": "/api/trains/search/",
+    "params": {},
+    "user_id": 4,
+    "execution_time": 0.004553079605102539,
+    "timestamp": 1771756528.9905052
+  }
+]

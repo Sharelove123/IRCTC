@@ -34,7 +34,8 @@ export default function RegisterPage() {
                 body: JSON.stringify(formData),
             });
 
-            login(data.access, data.refresh);
+            const isAdminLogin = data.is_admin === true;
+            login(data.access, data.refresh, isAdminLogin);
         } catch (err: any) {
             setError(err.message || 'Registration failed');
         } finally {

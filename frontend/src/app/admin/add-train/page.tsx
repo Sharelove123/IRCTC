@@ -24,6 +24,11 @@ export default function AddTrainPage() {
     // so legitimate superusers aren't blocked by React state delays.
 
     const loadTrains = async () => {
+        // Prevent SSR fetch without token
+        if (typeof window === 'undefined' || !localStorage.getItem('access_token')) {
+            return;
+        }
+
         try {
             const data = await fetchApi('/trains/');
             if (Array.isArray(data)) {
@@ -32,7 +37,7 @@ export default function AddTrainPage() {
                 setTrains(data.results);
             }
         } catch (err) {
-            console.error('Error fetching trains:', err);
+            console.error('Error fetching trains contextually:', err);
         }
     };
 

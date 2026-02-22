@@ -38,26 +38,43 @@ ADMIN_API_KEY=default_admin_secret
 ```
 
 ### 3. Installation
-Navigate into the `backend` folder and run the following:
 
+**Step 1: Clone the Repository & Start Backend**
 ```bash
-# 1. Create a virtual environment
+# 1. Clone the project
+git clone https://github.com/Sharelove123/IRCTC.git
+cd IRCTC/backend
+
+# 2. Create and activate a virtual environment
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-# 2. Install dependencies
+# 3. Install Django dependencies
 pip install -r requirements.txt
 
-# 3. Apply MySQL migrations
+# 4. Apply MySQL/SQLite migrations
 python manage.py migrate
 
-# 4. Optional: Seed the database with a dummy superuser & trains
+# 5. Optional: Seed the database with a dummy superuser & trains
 python create_initial_data.py
 # (Creates user 'abcd' with password 'abcd')
 
-# 5. Start the server
+# 6. Start the Django server (Port 8000)
 python manage.py runserver
 ```
+
+**Step 2: Start the Frontend Application (Next.js)**
+Open a *new* terminal window:
+```bash
+cd IRCTC/frontend
+
+# 1. Install Node.js dependencies
+npm install --legacy-peer-deps
+
+# 2. Run the development UI server (Port 3000)
+npm run dev
+```
+You can now visit `http://localhost:3000` in your web browser to interact seamlessly with the Full-Stack Train Booking Simulator!
 
 ---
 
@@ -121,4 +138,4 @@ python manage.py runserver
 * **MySQL Schema:** Modeled using optimized Django ORM classes in `models.py`.
 * **MongoDB Usage:** `log_search_to_mongo` correctly executes on `GET /api/trains/search/`. Aggregation Pipeline implemented inside `analytics/views.py`.
 * **Sample Logs:** A valid JSON export (`mongo_logs_sample.json`) showcasing the raw MongoDB schema is provided in the root folder.
-* **Frontend Application:** A full React/NextJS frontend was created independently to interactively test this API from a GUI. Run `npm install` and `npm run dev` in the `frontend` folder to launch it on port 3000.
+* **Frontend Application:** A full React/NextJS front-end was created independently to interactively test this API from a cleanly designed GUI (setup instructions are in the `Installation` section above).

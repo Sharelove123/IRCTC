@@ -23,10 +23,6 @@ export default function Analytics() {
         // The backend handles the 403 Forbidden check securely via JWT anyway.
 
         const loadAnalytics = async () => {
-            if (typeof window === 'undefined' || !localStorage.getItem('access_token')) {
-                return;
-            }
-
             try {
                 const data = await fetchApi('/analytics/top-routes/');
                 if (Array.isArray(data)) {
@@ -36,7 +32,7 @@ export default function Analytics() {
                     setError(data.error || 'Failed to analyze records');
                 }
             } catch (err: any) {
-                setError(err.message || 'Failed to load analytics contextually');
+                setError(err.message || 'Failed to load analytics');
             } finally {
                 setIsLoading(false);
             }

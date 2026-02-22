@@ -7,11 +7,10 @@ import { useRouter } from 'next/navigation';
 
 interface Booking {
     id: number;
-    trainName?: string;
-    trainNumber?: string;
-    train?: number;
-    source?: string;
-    destination?: string;
+    trainName: string;
+    trainNumber: string;
+    source: string;
+    destination: string;
     seats_booked: number;
     booking_time: string;
 }
@@ -30,10 +29,6 @@ export default function MyBookings() {
         }
 
         const loadBookings = async () => {
-            if (typeof window === 'undefined' || !localStorage.getItem('access_token')) {
-                return;
-            }
-
             try {
                 const data = await fetchApi('/bookings/my/');
                 // Transform the data slightly for presentation since Django returns just the train ID
@@ -41,7 +36,7 @@ export default function MyBookings() {
                 // We will just show the raw booking data here.
                 setBookings(data);
             } catch (err: any) {
-                setError(err.message || 'Failed to load bookings contextually');
+                setError(err.message || 'Failed to load bookings');
             } finally {
                 setIsLoading(false);
             }

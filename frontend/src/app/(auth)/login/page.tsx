@@ -27,9 +27,7 @@ export default function LoginPage() {
                 body: JSON.stringify({ username, password }),
             });
 
-            // Use backend boolean for admin status
-            const isAdminLogin = data.is_admin === true;
-            login(data.access, data.refresh, isAdminLogin);
+            login(data.access, data.refresh, data.is_staff === true);
         } catch (err: any) {
             setError(err.message || 'Login failed');
         } finally {

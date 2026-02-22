@@ -6,10 +6,11 @@ from .models import Train
 from .serializers import TrainSerializer
 from django.conf import settings
 from pymongo import MongoClient
+import certifi
 
 # Establish Mongo Connection
 try:
-    _mongo_client = MongoClient(settings.MONGO_URI, serverSelectionTimeoutMS=2000)
+    _mongo_client = MongoClient(settings.MONGO_URI, serverSelectionTimeoutMS=2000, tlsCAFile=certifi.where())
     mongo_db = _mongo_client[settings.MONGO_DB_NAME]
 except Exception as e:
     print(f"Failed to connect to MongoDB in views: {e}")

@@ -62,6 +62,10 @@ class TopRoutesView(generics.GenericAPIView):
             }
         ]
         
-        top_routes = list(logs_collection.aggregate(pipeline))
+        try:
+            top_routes = list(logs_collection.aggregate(pipeline))
+        except Exception as e:
+            print(f"MongoDB aggregation error: {e}")
+            return Response({'error': f'MongoDB query failed: {str(e)}'}, status=500)
         
         return Response(top_routes)

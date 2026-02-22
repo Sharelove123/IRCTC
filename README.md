@@ -14,32 +14,24 @@ This is a simplified backend clone of the IRCTC platform, fulfilling the require
 - Python 3.10+
 - MongoDB running locally or via Atlas.
 
-### 2. Environment Variables
-Rename the provided `.env.example` file to `.env` inside the `backend` folder and populate your database credentials:
-```env
-# backend/.env
-SECRET_KEY=your-django-secret-key
-DEBUG=True
+### 2. Available Environment Variables
+*(See Step 1 below on how to configure these)*
 
-# Database (SQLite is default, no config needed)
-
-# MongoDB URI for Logging
-MONGO_URI=mongodb+srv://admin:pass@cluster.mongodb.net/
-MONGO_DB_NAME=irctc_logs
-
-# Admin API Key for securing POST /api/trains/
-ADMIN_API_KEY=default_admin_secret
-```
-
-### 3. Installation
-
-**Step 1: Clone the Repository & Start Backend**
+**Step 1: Clone the Repository & Configure Environment**
 ```bash
 # 1. Clone the project
 git clone https://github.com/Sharelove123/IRCTC.git
 cd IRCTC/backend
 
-# 2. Create and activate a virtual environment
+# 2. Configure Environment Variables
+# Copy the provided template:
+cp .env.example .env
+# Open .env and adjust the MONGO_URI string to point to your cluster.
+```
+
+**Step 2: Start Backend Server**
+```bash
+# 1. Create and activate a virtual environment
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
@@ -57,7 +49,7 @@ python create_initial_data.py
 python manage.py runserver
 ```
 
-**Step 2: Start the Frontend Application (Next.js)**
+**Step 3: Start the Frontend Application (Next.js)**
 Open a *new* terminal window:
 ```bash
 cd IRCTC/frontend

@@ -49,7 +49,10 @@ python manage.py migrate
 
 # 5. Optional: Seed the database with a dummy superuser & trains
 python create_initial_data.py
-# (Creates user 'abcd' with password 'abcd')
+
+> **Note:** This command automatically generates a superadmin account so you can log in immediately.
+> * **Username:** `abcd`
+> * **Password:** `abcd`
 
 # 6. Start the Django server (Port 8000)
 python manage.py runserver

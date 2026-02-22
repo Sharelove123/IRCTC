@@ -30,9 +30,6 @@ export default function Home() {
 
   useEffect(() => {
     const fetchAllTrains = async () => {
-      if (typeof window === 'undefined' || !localStorage.getItem('access_token')) {
-        return;
-      }
 
       setIsLoading(true);
       try {

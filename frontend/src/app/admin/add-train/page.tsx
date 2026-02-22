@@ -24,10 +24,6 @@ export default function AddTrainPage() {
     // so legitimate superusers aren't blocked by React state delays.
 
     const loadTrains = async () => {
-        // Prevent SSR fetch without token
-        if (typeof window === 'undefined' || !localStorage.getItem('access_token')) {
-            return;
-        }
 
         try {
             const data = await fetchApi('/trains/');

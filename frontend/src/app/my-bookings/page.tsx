@@ -30,9 +30,6 @@ export default function MyBookings() {
         }
 
         const loadBookings = async () => {
-            if (typeof window === 'undefined' || !localStorage.getItem('access_token')) {
-                return;
-            }
 
             try {
                 const data = await fetchApi('/bookings/my/');

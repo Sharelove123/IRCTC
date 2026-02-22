@@ -23,9 +23,6 @@ export default function Analytics() {
         // The backend handles the 403 Forbidden check securely via JWT anyway.
 
         const loadAnalytics = async () => {
-            if (typeof window === 'undefined' || !localStorage.getItem('access_token')) {
-                return;
-            }
 
             try {
                 const data = await fetchApi('/analytics/top-routes/');

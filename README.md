@@ -31,9 +31,15 @@ cp .env.example .env
 
 **Step 2: Start Backend Server**
 ```bash
-# 1. Create and activate a virtual environment
+# 1. Create a virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# 2. Activate the virtual environment:
+# ---> On Windows (PowerShell/CMD):
+.\venv\Scripts\activate
+# ---> On Mac/Linux:
+# source venv/bin/activate
+
 
 # 3. Install Django dependencies
 pip install -r requirements.txt

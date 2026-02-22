@@ -30,12 +30,16 @@ export default function Home() {
 
   useEffect(() => {
     const fetchAllTrains = async () => {
+      if (typeof window === 'undefined' || !localStorage.getItem('access_token')) {
+        return;
+      }
+
       setIsLoading(true);
       try {
         const data = await fetchApi('/trains/search/');
         setTrains(data);
       } catch (err: any) {
-        console.error(err);
+        console.error('Error fetching trains contextually:', err);
       } finally {
         setIsLoading(false);
       }

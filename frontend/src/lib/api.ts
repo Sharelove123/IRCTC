@@ -1,4 +1,4 @@
-export const NEXT_PUBLIC_API_URL = typeof window !== 'undefined' ? (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api') : 'http://localhost:8000/api';
+export const NEXT_PUBLIC_API_URL = typeof window !== 'undefined' ? (process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api') : 'http://127.0.0.1:8000/api';
 
 export const fetchApi = async (endpoint: string, options: RequestInit = {}) => {
     const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;

@@ -4,7 +4,7 @@ This is a simplified backend clone of the IRCTC platform, fulfilling the require
 
 ## 🚀 Tech Stack
 * **Backend Framework:** Django / Django REST Framework (DRF)
-* **Primary Database (MySQL):** Used for transactional data including Users, Trains, and Bookings. (Uses `mysqlclient`)
+* **Primary Database (SQLite):** Used natively by Django for transactional data including Users, Trains, and Bookings.
 * **Analytics Database (MongoDB):** Used via `pymongo` (MongoDB Atlas) to log search requests and aggregate top routes.
 * **Authentication:** JWT-based (using `djangorestframework-simplejwt`)
 
@@ -12,7 +12,6 @@ This is a simplified backend clone of the IRCTC platform, fulfilling the require
 
 ### 1. Prerequisites
 - Python 3.10+
-- MySQL Server running locally (or remote)
 - MongoDB running locally or via Atlas.
 
 ### 2. Environment Variables
@@ -22,12 +21,7 @@ Rename the provided `.env.example` file to `.env` inside the `backend` folder an
 SECRET_KEY=your-django-secret-key
 DEBUG=True
 
-# MySQL Credentials
-DB_NAME=irctc_db
-DB_USER=root
-DB_PASSWORD=your_password
-DB_HOST=localhost
-DB_PORT=3306
+# Database (SQLite is default, no config needed)
 
 # MongoDB URI for Logging
 MONGO_URI=mongodb+srv://admin:pass@cluster.mongodb.net/
@@ -52,7 +46,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 # 3. Install Django dependencies
 pip install -r requirements.txt
 
-# 4. Apply MySQL/SQLite migrations
+# 4. Apply SQLite migrations
 python manage.py migrate
 
 # 5. Optional: Seed the database with a dummy superuser & trains
@@ -135,7 +129,7 @@ You can now visit `http://localhost:3000` in your web browser to interact seamle
 ## 📂 Project Structure & Deliverables
 
 * **Source Code:** A fully modularized Django application conforming to REST architectural standards.
-* **MySQL Schema:** Modeled using optimized Django ORM classes in `models.py`.
+* **SQLite Schema:** Modeled using optimized Django ORM classes in `models.py`.
 * **MongoDB Usage:** `log_search_to_mongo` correctly executes on `GET /api/trains/search/`. Aggregation Pipeline implemented inside `analytics/views.py`.
 * **Sample Logs:** A valid JSON export (`mongo_logs_sample.json`) showcasing the raw MongoDB schema is provided in the root folder.
 * **Frontend Application:** A full React/NextJS front-end was created independently to interactively test this API from a cleanly designed GUI (setup instructions are in the `Installation` section above).

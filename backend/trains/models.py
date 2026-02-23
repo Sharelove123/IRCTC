@@ -1,8 +1,5 @@
 from django.db import models
 
-class Train(models.fields.PositiveIntegerField):
-    pass
-    
 class Train(models.Model):
     train_number = models.CharField(max_length=20, unique=True, db_index=True)
     name = models.CharField(max_length=150)

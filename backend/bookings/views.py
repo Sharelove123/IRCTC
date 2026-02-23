@@ -23,8 +23,10 @@ class BookingCreateView(generics.CreateAPIView):
             train = get_object_or_404(Train.objects.select_for_update(), id=train_id)
             
             if train.available_seats >= seats_to_book:
-                train.available_seats -= seats_to_book
-                train.save()
+                from django.db.models import F
+                train.available_seats = F('available_seats') - seats_to_book
+                train.save(update_fields=['available_seats'])
+                train.refresh_from_db()
                 
                 # Create the booking
                 booking = Booking.objects.create(
